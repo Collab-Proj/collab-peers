@@ -1,13 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import imge from '../images/imge.jpg'; // Correct image import
+import imge from "../images/imge.jpg"; // Correct image import
+import { AppContext } from "../context/AppContext";
 
 const Signin = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  //const { setuserData,  } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -21,7 +24,7 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", JSON.stringify(formData, null, 2));
+    //console.log("Form submitted:", JSON.stringify(formData, null, 2));
     try {
       const response = await axios.post(
         "http://localhost:8000/api/user/signin",
@@ -34,6 +37,10 @@ const Signin = () => {
       );
       console.log("Response from backend:", response.data);
       const Data = response.data;
+      console.log(response.data.user._id + "id");
+      localStorage.setItem("id", response.data.user._id);
+      // setuserData({ id: response.data.user._id });
+      // /console.log(userData.id + "userdataid");
 
       if (response.status === 201) {
         window.alert("Login Successful");
@@ -51,7 +58,6 @@ const Signin = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="flex w-full max-w-5xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-        
         {/* Left side with image */}
         <div className="w-1/2 hidden md:block bg-blue-100">
           <img
@@ -63,10 +69,14 @@ const Signin = () => {
 
         {/* Right side with the form */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Sign In</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+            Sign In
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-gray-700 font-medium mb-2">Email:</label>
+              <label className="block text-gray-700 font-medium mb-2">
+                Email:
+              </label>
               <input
                 type="email"
                 name="email"
@@ -77,7 +87,9 @@ const Signin = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 font-medium mb-2">Password:</label>
+              <label className="block text-gray-700 font-medium mb-2">
+                Password:
+              </label>
               <input
                 type="password"
                 name="password"

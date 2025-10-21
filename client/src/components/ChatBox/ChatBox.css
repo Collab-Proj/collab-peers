@@ -1,0 +1,96 @@
+/* Chat box styling */
+.chat-box {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* Styling for the chat user section */
+.chat-user {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+/* Styling for the top of the chat with user info */
+.chat-top {
+  display: flex;
+  align-items: center; /* Align green dot and username horizontally */
+  gap: 1rem;
+}
+
+/* Green dot styling */
+.chat-top img:first-child {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Styling for the user name */
+.chat-top p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Profile picture styling */
+.chat-top img:last-child {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+}
+
+/* Styling for the input section */
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto; /* Pushes the input section to the bottom */
+}
+
+.chat-input input {
+  width: 80%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+}
+
+.chat-input img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.no-chat {
+  text-align: center;
+  padding: 20px;
+}
+
+.no-chat-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.no-chat h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.no-chat p {
+  font-size: 16px;
+  color: #888;
+}

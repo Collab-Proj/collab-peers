@@ -16,12 +16,12 @@ import ProtectedRoutes from "./utils/ProtectedRoutes";
 import PublicRoute from "./utils/PublicRoute";
 import Editproj from "./pages/Editproj";
 import Details from "./pages/Details";
-import Chat from "./pages/Chat";
 import Error from "./pages/Error";
-import Header from "./components/Header"; // Assuming you have a Header component
+import { Header } from "./components/Header"; // Assuming you have a Header component
 import { AuthProvider } from "./context/AuthContext"; // Import the AuthProvider
 import Landing from "./pages/landing";
 import Profile from "./pages/Profile";
+import { Chat } from "./pages/Chat/Chat";
 
 function AppContent() {
   const location = useLocation();

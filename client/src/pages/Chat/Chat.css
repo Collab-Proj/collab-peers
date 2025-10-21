@@ -1,0 +1,167 @@
+/* General Styles */
+.chat {
+  min-height: 100vh;
+  background: linear-gradient(rgb(17, 154, 239), rgb(232, 232, 99));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.chat-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Default layout: sidebar and chat */
+  gap: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 1200px;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* Mobile View Adjustments */
+@media screen and (max-width: 768px) {
+  .chat-container {
+    grid-template-columns: 1fr; /* Single-column layout */
+    height: auto; /* Adjust height for smaller screens */
+    width: 100%; /* Full width */
+  }
+
+  .chat-box {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+
+  .chat-top {
+    flex-direction: column; /* Stack user info */
+    align-items: center;
+    text-align: center;
+  }
+
+  .chat-top img:first-child {
+    margin-bottom: 0.5rem; /* Add spacing */
+  }
+
+  .chat-top img:last-child {
+    width: 50px;
+    height: 50px;
+  }
+
+  .chat-top p {
+    font-size: 14px;
+  }
+
+  .chat-messages {
+    max-height: 300px; /* Limit height for scrolling */
+    overflow-y: auto;
+    padding-right: 10px; /* Prevent overlap */
+  }
+
+  .chat-input {
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0.5rem;
+  }
+
+  .chat-input input {
+    font-size: 12px; /* Adjust font size */
+    padding: 8px; /* Smaller padding */
+  }
+
+  .chat-input img {
+    width: 25px; /* Smaller icon */
+    height: 25px;
+  }
+}
+
+/* Chat Box */
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f3f3f3;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat User Header - Make sticky */
+.chat-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  position: sticky;
+  top: 0; /* Sticks to the top of the chat-box */
+  background: white; /* Background color to blend with the chat box */
+  z-index: 10; /* Keeps it above the messages */
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd; /* Optional: adds a slight border for separation */
+}
+
+.chat-top img:first-child {
+  width: 10px;
+  height: 10px;
+}
+
+.chat-top img:last-child {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.chat-top p {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  max-height: calc(
+    100vh - 160px
+  ); /* Adjust to leave space for header and input box */
+  box-sizing: border-box;
+}
+
+.chat-message-left,
+.chat-message-right {
+  max-width: 70%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.chat-message-left {
+  align-self: flex-start;
+  background-color: #e0e0e0;
+  border-top-left-radius: 0;
+}
+
+.chat-message-right {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  border-top-right-radius: 0;
+}
+
+.timestamp {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: black;
+  text-align: right;
+}

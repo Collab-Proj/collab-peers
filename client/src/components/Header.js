@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons"; // Import user icon
-
-const Header = () => {
+import { AppContext } from "../context/AppContext";
+export const Header = () => {
+  const { setuserData } = useContext(AppContext);
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    window.location.href = "/";
+    localStorage.removeItem("id");
+
+    //setuserData({ id: null });
+    window.location.href = "/login";
   };
 
   const toggleDashboard = () => {
@@ -30,6 +34,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
+    // eslint-disable-next-line
   }, [isDashboardOpen]);
 
   return (
@@ -63,10 +68,8 @@ const Header = () => {
         className="relative hover:cursor-pointer text-gray-700 font-medium hover:text-[#6366F1] hover:underline"
         onClick={handleLogout}
       >
-          logout
+        logout
       </div>
     </nav>
   );
 };
-
-export default Header;
